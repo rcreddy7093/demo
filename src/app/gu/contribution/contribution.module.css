@@ -1,0 +1,22 @@
+.chartsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  /* Spacing between charts */
+}
+
+.chart {
+  flex: 1 1 calc(50% - 20px);
+  /* Takes 50% width with gap consideration */
+  min-width: 300px;
+  /* Ensures charts don’t get too small */
+  max-width: 300px;
+  /* Optional: Sets a max size */
+}
+
+@media (max-width: 768px) {
+  .chart {
+    flex: 1 1 100%;
+  }
+}

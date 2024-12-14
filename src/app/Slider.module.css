@@ -1,0 +1,41 @@
+.adContainer {
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+}
+
+.adImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Dots container */
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+/* Individual dot */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Active dot styling */
+.activeDot {
+  background-color: #007bff;
+  transform: scale(1.2); /* Optional: slightly enlarge the active dot */
+}

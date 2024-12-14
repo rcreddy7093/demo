@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
@@ -16,6 +16,119 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background), url('/public/app_logo.ioc') no-repeat center center;
+  background-size: cover;
+  /* background-color: rgb(185, 243, 204); */
+}
+
+
+/* Table styles */
+.table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.table thead tr {
+  background-color: #f2f2f2;
+}
+
+.table th {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Actions buttons container */
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* Button styles */
+.button {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+
+.button-edit {
+  background-color: #4CAF50;
+}
+
+.button-delete {
+  background-color: #f44336;
+}
+
+.alignCenter{
+
+  text-align: center;
+
+}
+
+.containerRight {
+  text-align: right;
+}
+.containerRightButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.containerRightButton:hover {
+  background-color: #1d2c3c;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.card {
+  padding: 10px;
+  text-align: center;
+  background: rgb(240, 145, 230);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 20px 0; /* Add some spacing around the table */
 }

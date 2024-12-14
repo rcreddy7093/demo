@@ -1,0 +1,84 @@
+.community-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .intro {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 16px;
+  }
+  
+  .description {
+    color: #444;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  
+  .steps {
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    margin-bottom: 16px;
+  }
+  
+  .step h3 {
+    font-size: 18px;
+    color: #0073e6;
+    margin-bottom: 8px;
+  }
+  
+  .step p, .step ul {
+    font-size: 15px;
+    color: #555;
+  }
+  
+  .step ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .example-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #eef4fa;
+    border-left: 4px solid #0073e6;
+  }
+  
+  .example-section h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .example-section ul {
+    margin-left: 20px;
+    list-style-type: disc;
+    color: #555;
+  }
+  
+  .mission {
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    color: #444;
+  }
+  
