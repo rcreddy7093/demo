@@ -1,9 +1,9 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { useEffect, useState,Suspense } from 'react';
 import Popup from './addUser';
 import { useSearchParams } from 'next/navigation';
 
-export default function Home() {
+const UsersPage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
@@ -14,32 +14,32 @@ export default function Home() {
     const role = searchParams.get('role');
 
 
-  const fetchUsers = async () => {
-    try {
-      const response = await fetch('/api/users');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+    const fetchUsers = useCallback(async () => {
+      try {
+        const response = await fetch('/api/users');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setError(error.message);
       }
-      const data = await response.json();
-      setUsers(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setError(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+    }, []); 
+  
+    useEffect(() => {
+      fetchUsers();
+    }, [fetchUsers]);
 
   const handleAddUserClick = () => {
-    setEditingUser(null); // When adding, reset the editing user
+    setEditingUser(null);
     setShowPopup(true);
   };
 
   const handlePopupClose = () => {
     setShowPopup(false);
-    setEditingUser(null); // Clear editing user when closing the popup
+    setEditingUser(null); 
   };
 
   const handlePopupSubmit = async (e, formData) => {
@@ -53,7 +53,6 @@ export default function Home() {
     };
 
     if (editingUser) {
-      // Update existing user
       try {
         await fetch(`/api/users`, {
           method: 'PUT',
@@ -76,7 +75,7 @@ export default function Home() {
       }
     }
 
-    fetchUsers(); // Refresh the users list
+    fetchUsers();
     setShowPopup(false);
   };
 
@@ -85,14 +84,14 @@ export default function Home() {
       await fetch(`/api/users?id=${id}`, {
         method: 'DELETE',
       });
-      fetchUsers(); // Refresh the users list
+      fetchUsers(); 
     } catch (error) {
       setError("Error deleting user.");
     }
   };
 
   const handleEditClick = (user) => {
-    setEditingUser(user); // Set user data for editing
+    setEditingUser(user);
     setShowPopup(true);
   };
 
@@ -100,16 +99,14 @@ export default function Home() {
     <div>
       <h2 className='alignCenter'>Users List</h2>
 
-      {/* Align the 'Add User' button to the right */}
       <div className='containerRight'>
         <button onClick={handleAddUserClick} className='containerRightButton'>Add User</button>
       </div>
-      {/* Popup for Add/Edit User */}
       <Popup
         show={showPopup}
         onClose={handlePopupClose}
         onSubmit={handlePopupSubmit}
-        initialData={editingUser} // Pass initial data to the popup
+        initialData={editingUser} 
       />
 
       {error ? (
@@ -150,5 +147,13 @@ export default function Home() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <UsersPage />
+    </Suspense>
   );
 }

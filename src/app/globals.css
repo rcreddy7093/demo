@@ -16,9 +16,9 @@
 
 body {
   color: var(--foreground);
-  background: var(--background), url('/public/app_logo.ioc') no-repeat center center;
+  /* background: var(--background), url('/public/app_logo.ioc') no-repeat center center; */
   background-size: cover;
-  /* background-color: rgb(185, 243, 204); */
+  background-color: rgb(185, 243, 204);
 }
 
 

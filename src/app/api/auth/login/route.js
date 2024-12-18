@@ -3,7 +3,7 @@ export async function POST(req) {
   const { username, password } = await req.json();  // Parse the incoming JSON body
 
   // Find the user in the userData array by phoneNumber
-  const user = userData.find(user => user.name === username);
+  const user = userData.find(user => user.phoneNumber === username);
 
   // Check if the user is found
   if (!user) {

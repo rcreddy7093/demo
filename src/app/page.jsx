@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./Slider.module.css";
+import Image from 'next/image';
 
 export default function WelcomePage() {
   const [data, setData] = useState({});
@@ -32,7 +33,7 @@ export default function WelcomePage() {
 
       return () => clearInterval(interval);
     }
-  }, [data.adds]);
+  }, [data.adds,data.addsRotatingTime]);
 
   const handleDotClick = (index) => {
     setCurrentAdIndex(index);
@@ -46,10 +47,14 @@ export default function WelcomePage() {
         <div>
           <div key={currentAdIndex} className={styles.adContainer}>
             <div className="bold">{data.adds[currentAdIndex].name}</div>
-            <img
+            <Image
               src={data.adds[currentAdIndex].img}
               alt={data.adds[currentAdIndex].name}
               className={styles.adImage}
+              layout="responsive"
+              width={16}
+              height={9}
+
             />
             <div>{data.adds[currentAdIndex].description}</div>
           </div>
@@ -73,10 +78,13 @@ export default function WelcomePage() {
           {data.events.map((event) => (
             <div key={event.id} className={styles.adContainer}>
               <div className="bold">{event.name}</div>
-              <img
+              <Image
                 src={event.img}
                 alt={event.name}
                 className={styles.adImage}
+                layout="responsive"
+                width={16}
+                height={9}
               />
               <div>{event.description}</div>
               {event.subEvents && event.subEvents.length > 0 && (
@@ -85,10 +93,13 @@ export default function WelcomePage() {
                     <div key={subEvent.id} className={styles.subEvent}>
                       <div>{subEvent.name}</div>
                       {subEvent.img && (
-                        <img
+                        <Image
                           src={subEvent.img}
                           alt={subEvent.name}
                           className={styles.subEventImage}
+                          layout="responsive"
+                          width={16}
+                          height={9}
                         />
                       )}
                       <div>{subEvent.description}</div>
@@ -100,9 +111,6 @@ export default function WelcomePage() {
           ))}
         </div>
       )}
-
-
-
     </div>
   );
 }
